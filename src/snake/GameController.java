@@ -33,9 +33,6 @@ public class GameController implements KeyListener,Runnable {
 		}else if(keyCode == KeyEvent.VK_RIGHT && grid.getSnakeDirection() != Direction.LEFT){
 			grid.changeDirection(Direction.RIGHT);
 		}
-		
-		gameView.draw();
-		
 	}
 
 	@Override

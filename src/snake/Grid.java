@@ -80,7 +80,6 @@ public class Grid {
 			return false;
 		}
 		//碰到自己
-		System.out.println(head.getX() + "..." + head.getY());
 		if(gridStatus[head.getX()][head.getY()] == true){
 			return false;
 		}
@@ -90,8 +89,6 @@ public class Grid {
 	
 	public boolean nextRound(){
 		
-		boolean flag = false;
-		
 		Node oldTail = snake.move(snakeDirection);
 		
 		if(isLive(snake)){
@@ -99,14 +96,13 @@ public class Grid {
 				snake.grow(oldTail);
 				createFood();
 			}
-			flag = true;
 		}else {
-			return flag = false;
+			return false;
 		}
 		
 		refreshStatus();
 		
-		return flag;
+		return true;
 	}
 	
 	public void changeDirection(Direction direction){

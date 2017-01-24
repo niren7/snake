@@ -2,6 +2,8 @@ package snake;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Random;
+
 import javax.swing.JPanel;
 
 public class GameView {
@@ -46,7 +48,18 @@ public class GameView {
 	}
 
 	private void drawFood(Graphics graphics, Node food) {
-		drawCircle(graphics, food, Color.YELLOW);
+		int color = new Random().nextInt(3);
+		switch (color) {
+		case 0:
+			drawCircle(graphics, food, Color.RED);
+			break;
+		case 1:
+			drawCircle(graphics, food, Color.YELLOW);
+			break;
+		case 2:
+			drawCircle(graphics, food, Color.GREEN);
+			break;
+		}
 	}
 
 	public void drawGridBackGround(Graphics graphics){
