@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 
 public class GameController implements KeyListener,Runnable {
-
+	
 	private Grid grid;
 	private GameView gameView;
 	

@@ -50,7 +50,7 @@ public class Grid {
 		refreshStatus();
 	}
 	
-	private void createFood() {
+	private void createFood(){
 		
 		int x,y;
 		Random random = new Random();
@@ -76,11 +76,11 @@ public class Grid {
 		
 		//碰到边界
 		Node head = snake.gethead();
-		if(head.getX() >= width || head.getY() >= height){
+		if(head.getX() >= width || head.getY() >= height || head.getX() < 0 || head.getY() < 0){
 			return false;
 		}
-		
 		//碰到自己
+		System.out.println(head.getX() + "..." + head.getY());
 		if(gridStatus[head.getX()][head.getY()] == true){
 			return false;
 		}
@@ -101,7 +101,7 @@ public class Grid {
 			}
 			flag = true;
 		}else {
-			flag = false;
+			return flag = false;
 		}
 		
 		refreshStatus();
