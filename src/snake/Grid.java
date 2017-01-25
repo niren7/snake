@@ -16,12 +16,14 @@ public class Grid {
 	private Node food;
 	
 	//感觉放在Snake类里面会更好
-	private Direction snakeDirection = Direction.LEFT;
+	private Direction oldSnakeDirection = Direction.LEFT;
+	private Direction newSnakeDirection;
 	
 	public Grid(int width, int height) {
 		super();
 		this.width = width;
 		this.height = height;
+		this.newSnakeDirection = oldSnakeDirection;
 		
 		gridStatus = new boolean[width][height];
 		
@@ -35,6 +37,16 @@ public class Grid {
 	}
 	
 	
+	public Direction getNewSnakeDirection() {
+		return newSnakeDirection;
+	}
+
+
+	public void setNewSnakeDirection(Direction newSnakeDirection) {
+		this.newSnakeDirection = newSnakeDirection;
+	}
+
+
 	private void initSnake() {
 		
 		snake = new Snake();
@@ -89,7 +101,8 @@ public class Grid {
 	
 	public boolean nextRound(){
 		
-		Node oldTail = snake.move(snakeDirection);
+		Node oldTail = snake.move(newSnakeDirection);
+		oldSnakeDirection = newSnakeDirection;
 		
 		if(isLive(snake)){
 			if(snake.getFood(food)){
@@ -106,7 +119,7 @@ public class Grid {
 	}
 	
 	public void changeDirection(Direction direction){
-		this.snakeDirection = direction;
+		this.oldSnakeDirection = direction;
 	}
 	
 	public Snake getSnake() {
@@ -126,11 +139,11 @@ public class Grid {
 	}
 
 	public Direction getSnakeDirection() {
-		return snakeDirection;
+		return oldSnakeDirection;
 	}
 
 	public void setSnakeDirection(Direction snakeDirection) {
-		this.snakeDirection = snakeDirection;
+		this.oldSnakeDirection = snakeDirection;
 	}
 
 	public int getWidth() {

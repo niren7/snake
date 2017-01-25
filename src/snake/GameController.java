@@ -23,16 +23,19 @@ public class GameController implements KeyListener,Runnable {
 	public void keyPressed(KeyEvent e) {
 		
 		int keyCode = e.getKeyCode();
+		Direction oldDirection = grid.getSnakeDirection();
 		
-		if(keyCode == KeyEvent.VK_UP && grid.getSnakeDirection() != Direction.DOWN){
-			grid.changeDirection(Direction.UP);
-		}else if(keyCode == KeyEvent.VK_DOWN && grid.getSnakeDirection() != Direction.UP){
-			grid.changeDirection(Direction.DOWN);
-		}else if(keyCode == KeyEvent.VK_LEFT && grid.getSnakeDirection() != Direction.RIGHT){
-			grid.changeDirection(Direction.LEFT);
-		}else if(keyCode == KeyEvent.VK_RIGHT && grid.getSnakeDirection() != Direction.LEFT){
-			grid.changeDirection(Direction.RIGHT);
+		if(keyCode == KeyEvent.VK_UP && oldDirection != Direction.DOWN){
+			grid.setNewSnakeDirection(Direction.UP);
+		}else if(keyCode == KeyEvent.VK_DOWN && oldDirection != Direction.UP){
+			grid.setNewSnakeDirection(Direction.DOWN);
+		}else if(keyCode == KeyEvent.VK_LEFT && oldDirection != Direction.RIGHT){
+			grid.setNewSnakeDirection(Direction.LEFT);
+		}else if(keyCode == KeyEvent.VK_RIGHT && oldDirection != Direction.LEFT){
+			grid.setNewSnakeDirection(Direction.RIGHT);
 		}
+		
+		
 	}
 
 	@Override
